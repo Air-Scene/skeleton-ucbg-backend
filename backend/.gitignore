@@ -1,0 +1,43 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IDE files
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+.settings/
+.classpath
+.project
+.factorypath
+.springBeans
+.sts4-cache
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Environment files
+.env
+.env.*
+!.env.example
+application-local.yml
+application-local.properties
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build files
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Test coverage
+coverage/
+.coverage

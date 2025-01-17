@@ -1,0 +1,86 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/myapp}
+    username: ${PGUSER:app_user}
+    password: ${PGPASSWORD:your_secure_password}
+    hikari:
+      maximum-pool-size: ${DB_MAX_POOL_SIZE:3}
+      minimum-idle: ${DB_MIN_IDLE:1}
+      connection-timeout: ${DB_CONNECTION_TIMEOUT:20000}
+      initialization-fail-timeout: ${DB_INIT_FAIL_TIMEOUT:30000}
+      validation-timeout: ${DB_VALIDATION_TIMEOUT:5000}
+  
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:1025}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      '[mail.smtp.auth]': ${MAIL_SMTP_AUTH:false}
+      '[mail.smtp.starttls.enable]': ${MAIL_SMTP_STARTTLS:false}
+      '[mail.smtp.timeout]': 5000
+      '[mail.smtp.connectiontimeout]': 5000
+      '[mail.smtp.writetimeout]': 5000
+    
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:update}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default-schema: ${DB_SCHEMA:app}
+        '[format_sql]': false
+    show-sql: false
+    generate-ddl: ${JPA_GENERATE_DDL:false}
+
+  web:
+    resources:
+      static-locations: classpath:/static/
+      cache:
+        period: ${CACHE_PERIOD:86400}
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:9BfxjyTC1m7XvKYefpke7ujwY/VwMyH2Q9eJqgCCxZOSP/hcEz+yvZwlZdeETkAvmIxJy0doK50YOEYnuD1G3g==}
+    expiration: ${JWT_EXPIRATION:900000}
+    refresh-token:
+      expiration: ${JWT_REFRESH_EXPIRATION:604800000}
+      cookie-name: refreshToken
+    token-prefix: "Bearer "
+    header-string: "Authorization"
+  cors:
+    allowed-origins:
+      - ${FRONTEND_URL:http://localhost:5173}
+  cookie:
+    domain: ${COOKIE_DOMAIN:localhost}
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
+  backend-url: ${BACKEND_URL:http://localhost:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+      base-path: /actuator
+  endpoint:
+    health:
+      enabled: true
+      show-details: ${HEALTH_SHOW_DETAILS:never}
+      probes:
+        enabled: true
+
+logging:
+  level:
+    root: ${LOG_LEVEL_ROOT:INFO}
+    '[com.example.demo]': ${LOG_LEVEL_APP:INFO}
+    '[org.springframework]': ${LOG_LEVEL_SPRING:WARN}
+    '[org.hibernate]': ${LOG_LEVEL_HIBERNATE:INFO}
+
+server:
+  port: ${PORT:8080}
+  address: 0.0.0.0
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 2048

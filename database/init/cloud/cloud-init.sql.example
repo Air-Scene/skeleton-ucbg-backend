@@ -1,0 +1,13 @@
+-- Include local initialization scripts
+\i ../local/01-init.sql
+\i ../local/02-init.sql
+
+-- Additional Cloud-specific privileges (replace with your actual database and user names)
+GRANT CONNECT ON DATABASE your_database_name TO your_database_user;
+GRANT USAGE, CREATE ON SCHEMA app TO your_database_user;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA app TO your_database_user;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA app TO your_database_user;
+
+-- Additional Cloud-specific privileges
+GRANT ALL PRIVILEGES ON SCHEMA app TO your_database_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA app GRANT ALL ON TABLES TO your_database_user; 

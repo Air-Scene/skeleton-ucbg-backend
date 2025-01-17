@@ -1,0 +1,23 @@
+# Data directories
+data/
+pgdata/
+postgres-data/
+
+# Logs
+logs/
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Backup files
+*.backup
+*.bak
+*.dump
+*.sql.gz
+
+# OS files
+.DS_Store
+Thumbs.db
