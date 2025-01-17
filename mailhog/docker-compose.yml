@@ -8,17 +8,22 @@ services:
       - "1025:1025" # SMTP port
       - "8025:8025" # Web UI port
     networks:
-      - mail-network
+      - mail_network
     environment:
       MH_STORAGE: maildir
       MH_MAILDIR_PATH: /tmp
     volumes:
-      - mailhog-data:/tmp
+      - mailhog_data:/tmp
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "1025"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
-  mail-network:
+  mail_network:
     driver: bridge
 
 volumes:
-  mailhog-data: 
+  mailhog_data: 

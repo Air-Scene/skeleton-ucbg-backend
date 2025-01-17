@@ -1,6 +1,7 @@
 # Data directories
 data/
 pgdata/
+postgres-data/
 
 # Logs
 logs/
@@ -20,9 +21,3 @@ logs/
 # OS files
 .DS_Store
 Thumbs.db
-
-# Volume data
-postgres-data/
-
-# Cloud SQL init script
-init/cloud/cloud-init.sql
