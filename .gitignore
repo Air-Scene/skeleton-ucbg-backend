@@ -1,0 +1,139 @@
+# Backend
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+# Frontend
+# dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+*.env
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.prod
+.env.production
+.env.staging
+.env.development
+
+# Database
+database/data/
+database/logs/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Compiled output
+target/
+build/
+dist/
+out/
+
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Testing
+coverage/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Cloud SQL Proxy binary
+cloud-sql-proxy
+cloud-sql-proxy.*
+
+# Cloud SQL init script
+database/init/cloud/cloud-init.sql
+
+# Production
+build/
+dist/
+target/
+backend/src/main/resources/static/
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.prod
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database
+database/data/
+database/logs/
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.prod.example

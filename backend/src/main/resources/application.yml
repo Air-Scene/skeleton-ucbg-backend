@@ -1,0 +1,114 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:myapp}
+    username: ${POSTGRES_USER:app_user}
+    password: ${POSTGRES_PASSWORD:your_secure_password}
+    hikari:
+      maximum-pool-size: ${DB_MAX_POOL_SIZE:10}
+      minimum-idle: ${DB_MIN_IDLE:5}
+      connection-timeout: ${DB_CONNECTION_TIMEOUT:30000}
+      initialization-fail-timeout: ${DB_INIT_FAIL_TIMEOUT:30000}
+      validation-timeout: ${DB_VALIDATION_TIMEOUT:5000}
+  
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:1025}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    default-encoding: UTF-8
+    properties:
+      '[mail.smtp.auth]': ${MAIL_SMTP_AUTH:false}
+      '[mail.smtp.starttls.enable]': ${MAIL_SMTP_STARTTLS:false}
+      '[mail.smtp.timeout]': ${MAIL_SMTP_TIMEOUT:5000}
+      '[mail.smtp.connectiontimeout]': ${MAIL_SMTP_CONNECTIONTIMEOUT:5000}
+      '[mail.smtp.writetimeout]': ${MAIL_SMTP_WRITETIMEOUT:5000}
+      '[mail.smtp.debug]': ${MAIL_DEBUG:true}
+      '[mail.from]': ${MAIL_FROM:noreply@localhost}
+    
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:update}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default-schema: ${DB_SCHEMA:app}
+        '[format_sql]': ${FORMAT_SQL:true}
+        connection:
+          characterEncoding: utf8
+          useUnicode: true
+    show-sql: ${JPA_SHOW_SQL:true}
+    generate-ddl: ${JPA_GENERATE_DDL:true}
+
+  mvc:
+    contentnegotiation:
+      favor-parameter: true
+    static-path-pattern: /**
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  web:
+    resources:
+      static-locations: classpath:/static/
+      cache:
+        period: ${STATIC_CACHE_PERIOD:3600}
+      chain:
+        strategy:
+          content:
+            enabled: true
+            paths: /**
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:c9e94f1a8c0e4b1d3f6a9c2e5b8d7f0a3c6e9d2b5f8a1c4d7e0b3f6a9c2e5b8d7f0a3c6e9d2b5f8a1c4d7e0b3f6a9c2e5b8}
+    expiration: ${JWT_EXPIRATION:900000}
+    refresh-token:
+      expiration: ${JWT_REFRESH_EXPIRATION:604800000}
+      cookie-name: refreshToken
+    token-prefix: "Bearer "
+    header-string: "Authorization"
+  cors:
+    allowed-origins:
+      - ${FRONTEND_URL:http://localhost:5173}
+  cookie:
+    domain: ${COOKIE_DOMAIN:localhost}
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
+  backend-url: ${BACKEND_URL:http://localhost:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+      base-path: /actuator
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+      probes:
+        enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+    db:
+      enabled: true
+
+logging:
+  level:
+    root: ${LOG_LEVEL_ROOT:INFO}
+    '[com.example.demo]': ${LOG_LEVEL_APP:DEBUG}
+    '[org.springframework.security]': ${LOG_LEVEL_SECURITY:INFO}
+    '[org.springframework.web]': ${LOG_LEVEL_WEB:INFO}
+    '[org.hibernate.SQL]': ${LOG_LEVEL_SQL:INFO}
+    '[org.hibernate.type.descriptor.sql.BasicBinder]': ${LOG_LEVEL_SQL_PARAMS:INFO}
+    '[org.springframework]': ${LOG_LEVEL_SPRING:INFO}
+    '[com.zaxxer.hikari]': ${LOG_LEVEL_HIKARI:INFO}
+
+server:
+  port: ${SERVER_PORT:8080}
+  address: 0.0.0.0
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml,application/vnd.ms-fontobject,application/x-font-ttf,application/x-font-opentype,application/x-font-truetype,application/x-font-woff,application/x-font-woff2,image/svg+xml,image/x-icon,image/vnd.microsoft.icon,font/ttf,font/eot,font/otf,font/woff,font/woff2
+    min-response-size: 2048

@@ -1,0 +1,28 @@
+# Data directories
+data/
+pgdata/
+
+# Logs
+logs/
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Backup files
+*.backup
+*.bak
+*.dump
+*.sql.gz
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Volume data
+postgres-data/
+
+# Cloud SQL init script
+init/cloud/cloud-init.sql
